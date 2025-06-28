@@ -1,67 +1,12 @@
-# main.py
+from dotenv import load_dotenv
 import os
-import base64
-import io
-import math
-from flask import Flask, flash, render_template, Response, redirect, request, session, abort, url_for
-import mysql.connector
-import hashlib
-import datetime
-from datetime import datetime
-from datetime import date
-import random
-from random import randint
-from urllib.request import urlopen
-import webbrowser
-import cv2
-import cv2 as cv
-from PIL import Image
-from PIL import Image, ImageOps
+load_dotenv()
 
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-
-#from werkzeug.utils import secure_filename
-#from PIL import Image
-
-import urllib.request
-import urllib.parse
-import seaborn as sns
-
-import shutil
-import imagehash
-from werkzeug.utils import secure_filename
-
-'''from collections import Counter
-from mlxtend.plotting import plot_confusion_matrix
-
-##
-
-import glob
-from keras.models import Sequential, load_model
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import keras as k
-from keras.layers import Dense
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-import matplotlib.pyplot as plt
-from tensorflow.keras.callbacks import ReduceLROnPlateau, ModelCheckpoint, EarlyStopping
-from tensorflow.keras.optimizers import Adam
-##
-import warnings
-warnings.filterwarnings('ignore')'''
-##
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="",
-  charset="utf8",
-  database="breast_cancer"
-
+db = mysql.connector.connect(
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME")
 )
 app = Flask(__name__)
 ##session key
